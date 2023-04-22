@@ -1,0 +1,16 @@
+{
+  "name": "FightGame",
+  "version": 0.1,
+
+  "display":
+    {
+      "size": [1280, 720],
+      "framerate": 60
+    },
+
+    "control":
+      {
+
+      }
+
+}

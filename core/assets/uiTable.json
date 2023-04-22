@@ -1,0 +1,39 @@
+{
+    "basic_window": {
+        "images": {
+            "bot": "ressources/gui/window/bot.png",
+            "left": "ressources/gui/window/left.png",
+            "top": "ressources/gui/window/top.png",
+            "right": "ressources/gui/window/right.png",
+            "left_bot": "ressources/gui/window/left_bot.png",
+            "left_top": "ressources/gui/window/left_top.png",
+            "right_top": "ressources/gui/window/right_top.png",
+            "right_bot": "ressources/gui/window/right_bot.png",
+            "cross": "ressources/gui/window/cross.png"
+        },
+        "id": "1",
+        "bg_color": "(106, 196, 86)",
+        "bar_color": "(85, 85, 85)",
+        "priority": 2,
+        "font": "ressources/gui/font/font.ttf"
+    },
+    "basic_window2": {
+        "images": {
+            "bot": "ressources/gui/window/bot.png",
+            "left": "ressources/gui/window/left.png",
+            "top": "ressources/gui/window/top.png",
+            "right": "ressources/gui/window/right.png",
+            "left_bot": "ressources/gui/window/left_bot.png",
+            "left_top": "ressources/gui/window/left_top.png",
+            "right_top": "ressources/gui/window/right_top.png",
+            "right_bot": "ressources/gui/window/right_bot.png",
+            "cross": "ressources/gui/window/cross.png"
+        },
+        "id": "1",
+        "bg_color": "(255, 0, 0)",
+        "bar_color": "(85, 85, 85)",
+        "priority": 1,
+        "font": "ressources/gui/font/font.ttf"
+    }
+
+}
