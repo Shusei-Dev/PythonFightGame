@@ -30,7 +30,7 @@ class WindowClass(Sprite):
         self.on_front = False
         self.bg_window = False
         
-        self.focus_win = False
+        self.focused = False
         
         # Check the size of the window
         if size[0] < 48 and size[1] < 48:
@@ -139,21 +139,32 @@ class WindowClass(Sprite):
                 self.state = False 
         
         # Check if the window is front or not
-        if self.gameObj.window.all_sprite.get_layer_of_sprite(self) == self.gameObj.window.all_sprite.get_top_layer():
-            self.on_front = True
-        else:
-            self.on_front = False
-            
+        try:
+            if self.gameObj.window.all_sprite.get_layer_of_sprite(self) == self.gameObj.window.all_sprite.get_top_layer():
+                self.on_front = True
+            else:
+                self.on_front = False
+        except:
+            pass        
+                    
         # Check if the window is behing another one (with size and pos)
         windows_collision = pg.sprite.spritecollide(self, self.groups[0], False)
         
-        
+        for cursor in windows_collision:
+            for windows in windows_collision:
+                if windows != cursor:
+                    if cursor.position.x > windows.position.x and cursor.position.x + cursor.size[0] < windows.position.x + windows.size[0] and cursor.position.y > windows.position.y and cursor.position.y + cursor.size[1] < windows.position.y + windows.size[1] and cursor._layer < windows._layer:
+                        print(cursor._layer, windows._layer)
+                        cursor.bg_window = True
+                    else:
+                        cursor.bg_window = False
+                        
 
         
         # Show the full name of the window when the mouse is on it
         if self.change_name:
             if self.window_text_rect.collidepoint(self.gameObj.inputs.mouse_event.POS) and not self.gameObj.inputs.mouse_event.LEFT_CLICK[0]:
-                if self.on_front:
+                if self.focused:
                     self.bubble_sprite.position.x = self.gameObj.inputs.mouse_event.POS[0] - (self.bubble_sprite.size[0] / 2)
                     self.bubble_sprite.position.y = self.gameObj.inputs.mouse_event.POS[1] - 20
                     self.bubble_sprite.state = True
@@ -166,9 +177,14 @@ class WindowClass(Sprite):
                 if self.draggble == False:
                     # Set the window who has been grabbed to the front layer
                     self.gameObj.window.all_sprite.move_to_front(self)
+                    
+                    self.focused = True
+                    self._layer += 1
                     for windows in self.groups[0]:
                         if windows != self:
-                            self.gameObj.window.all_sprite.move_to_back(windows)
+                            windows.focused = False
+                            windows._layer -= 1
+                    
                                     
                     self.pos_when_click.x = self.gameObj.inputs.mouse_event.POS[0]
                     self.pos_when_click.y = self.gameObj.inputs.mouse_event.POS[1]
