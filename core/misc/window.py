@@ -9,12 +9,12 @@ class Window():
 
         self.gameObj = gameObj
         self.base_resolution = size
-        self.scale_factor = 1
+        self.scale_factor = 10
         self.screen_size = (pg.display.Info().current_w, pg.display.Info().current_h)
         self.name = name
         self.version = version
 
-        self.window = pg.display.set_mode([self.base_resolution[0] * self.scale_factor, self.base_resolution[1] * self.scale_factor])
+        self.window = pg.display.set_mode(self.base_resolution)
         self.display = pg.Surface(self.base_resolution)
 
         pg.display.set_caption(self.name + " v" + str(self.version))
@@ -32,7 +32,11 @@ class Window():
         # TODO: Work on the focusing system
         #self.focus_windows = win32ui.GetForegroundWindow().GetWindowText()
         
-        self.window.blit(pg.transform.scale(self.display, self.window.get_size()), (0, 0))
+        # Scale if needed
+       
+        
+        self.window.blit(self.display, (0, 0))
+        print(self.display.get_width())
 
         pg.display.update()
 
@@ -40,6 +44,7 @@ class Window():
         self.dt = t - self.last_frame_end
         self.last_frame_end = t
         self.master_clock += self.dt
+        
 
         self.display.fill((0, 0, 0))
 

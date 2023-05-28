@@ -8,16 +8,17 @@ class guiManager:
     def __init__(self, gameObj):
 
         self.gameObj = gameObj
+        self.assets = self.gameObj.assets
 
         self.gui_groups = {"btn_group": pg.sprite.Group(), "window_group": pg.sprite.Group(), "popup_group": pg.sprite.Group()}
-        self.uiTable = self.gameObj.assets.load_table("uiTable")
+        self.uiTable = self.assets.load_table("uiTable")
+        
 
         #self.btn_test = Button(self.gameObj, "btn_test", pg.Vector2(0, 0), None, self.gameObj.assets.btn_test, 0, 1, self.gui_groups["btn_group"])
         #self.org_color = [[74, 74, 74], [106, 106, 106], [128, 128, 128]]
             
-        self.windowTest = WindowClass(self.gameObj, "window_test", pg.Vector2(100, 100), (352, 160), self.gameObj.assets.get_table_element(self.uiTable, "basic_window"), [self.gui_groups["window_group"]], "window_test")
-        self.windowTest2 = WindowClass(self.gameObj, "window_test2", pg.Vector2(500, 500), (144, 64), self.gameObj.assets.get_table_element(self.uiTable, "basic_window2"), [self.gui_groups["window_group"], self.gui_groups["popup_group"]], "this is a test window it retract if its too large")
-        self.windowTest3 = WindowClass(self.gameObj, "window_test3", pg.Vector2(350, 350), (240, 240), self.gameObj.assets.get_table_element(self.uiTable, "basic_window"), [self.gui_groups["window_group"]], "window_test3")
+        self.windowTest = WindowClass(self.gameObj, self.assets.get_table_element(self.uiTable, "window_test"), [self.gui_groups["window_group"]])
+        self.windowTest2 = WindowClass(self.gameObj, self.assets.get_table_element(self.uiTable, "window_test2"), [self.gui_groups["window_group"], self.gui_groups["popup_group"]])
 
     def update(self):
         

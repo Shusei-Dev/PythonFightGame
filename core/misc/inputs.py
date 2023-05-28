@@ -9,7 +9,6 @@ class Inputs():
 
         self.mouse_event = MouseEventHandler()
 
-
     def update(self):
         for event in pg.event.get():
             if event.type == pg.QUIT:
@@ -19,6 +18,7 @@ class Inputs():
                 if event.key == pg.K_ESCAPE:
                     self.gameObj.quit()
 
+        self.keys_event = pg.key.get_pressed()
 
         self.mouse_event.btn_pressed(pg.mouse.get_pressed())
 

@@ -1,5 +1,5 @@
 {
-  "name": "FightGame",
+  "name": "SurvivalGame",
   "version": 0.1,
 
   "display":
@@ -10,7 +10,10 @@
 
     "control":
       {
-
+        "forward": "z",
+        "backward": "s",
+        "left": "q",
+        "right": "d"
       }
 
 }

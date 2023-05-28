@@ -1,35 +1,34 @@
 {
-    "basic_window": {
-        "images": {
-            "bot": "ressources/gui/window/bot.png",
-            "left": "ressources/gui/window/left.png",
-            "top": "ressources/gui/window/top.png",
-            "right": "ressources/gui/window/right.png",
-            "left_bot": "ressources/gui/window/left_bot.png",
-            "left_top": "ressources/gui/window/left_top.png",
-            "right_top": "ressources/gui/window/right_top.png",
-            "right_bot": "ressources/gui/window/right_bot.png",
-            "cross": "ressources/gui/window/cross.png"
-        },
+    "window_test": {
+        "sheet_path": "ressources/gui/window/window_sheet.png",
         "id": "1",
+        "size": {
+            "width": 352,
+            "height": 160
+        },
+        "position": {
+            "x": 100,
+            "y": 100
+        },
+        "name": "window_test",
         "bg_color": "(106, 196, 86)",
         "bar_color": "(85, 85, 85)",
         "priority": 2,
         "font": "ressources/gui/font/font.ttf"
     },
-    "basic_window2": {
-        "images": {
-            "bot": "ressources/gui/window/bot.png",
-            "left": "ressources/gui/window/left.png",
-            "top": "ressources/gui/window/top.png",
-            "right": "ressources/gui/window/right.png",
-            "left_bot": "ressources/gui/window/left_bot.png",
-            "left_top": "ressources/gui/window/left_top.png",
-            "right_top": "ressources/gui/window/right_top.png",
-            "right_bot": "ressources/gui/window/right_bot.png",
-            "cross": "ressources/gui/window/cross.png"
+
+    "window_test2": {
+        "sheet_path": "ressources/gui/window/window_sheet.png",
+        "id": "2",
+        "size": {
+            "width": 144,
+            "height": 64
         },
-        "id": "1",
+        "position": {
+            "x": 500,
+            "y": 500
+        },
+        "name": "this is a test window it retract if its too large",
         "bg_color": "(255, 0, 0)",
         "bar_color": "(85, 85, 85)",
         "priority": 1,

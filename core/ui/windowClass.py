@@ -6,20 +6,28 @@ from core.units.spriteClass import *
 from core.ui.btnClass import *
 from core.misc.font_loader import * 
 from core.ui.popupClass import *
+from core.misc.spr_sheet_loader import *
 
 class WindowClass(Sprite):
     
-    def __init__(self, gameObj, name, position, size, sprite_table, groups, window_name):
+    def __init__(self, gameObj, sprite_table, groups):
         
         self.gameObj = gameObj
         
-        self.sprite_table = sprite_table
+        self.sprite_table = sprite_table[0]
+        
+        name = sprite_table[1]
+        position = pg.Vector2(self.sprite_table["position"]["x"], self.sprite_table["position"]["y"])
+        size = (self.sprite_table["size"]["width"], self.sprite_table["size"]["height"])
+        window_name = self.sprite_table["name"]
         
         self.bg_color = eval(self.sprite_table["bg_color"])
-        
         self.bar_color = eval(self.sprite_table["bar_color"])
         self.priority = int(self.sprite_table["priority"])
-        self.animation = self.sprite_table["images"]
+        
+        #TODO: Change the method to spritesheet
+        self.animation = load_sheet(self.sprite_table["sheet_path"], 16, 16, 9)
+        
         self.sprite_id = self.sprite_table["id"]
         
         self.groups = groups
@@ -59,7 +67,7 @@ class WindowClass(Sprite):
         self.rect_bar = pg.Rect(self.position.x, self.position.y, self.size[0], 14)
         
         # Draw the cross
-        self.image.blit(self.images["cross"], (self.size[0] - 13, 3))
+        self.image.blit(self.images["img9"], (self.size[0] - 13, 3))
         
         # Create the collison of the cross
         self.cross_collide = pg.Rect(self.position.x + self.size[0] - 12, self.position.y + 3, 10, 10)
@@ -100,32 +108,32 @@ class WindowClass(Sprite):
             self.window_text_rect = pg.Rect(self.position[0] + 4, self.position[1] + 4, self.window_b_text.get_size()[0], self.window_b_text.get_size()[1])
         
         # Drawing the corner
-        self.image.blit(self.images["left_top"], (0, 0))
-        self.image.blit(self.images["right_top"], (self.size[0] - 16, 0))
-        self.image.blit(self.images["left_bot"], (0, self.size[1] - 16))
-        self.image.blit(self.images["right_bot"], (self.size[0] - 16, self.size[1] - 16))
+        self.image.blit(self.images["img1"], (0, 0))
+        self.image.blit(self.images["img2"], (self.size[0] - 16, 0))
+        self.image.blit(self.images["img3"], (0, self.size[1] - 16))
+        self.image.blit(self.images["img4"], (self.size[0] - 16, self.size[1] - 16))
         
         # Drawing the edges
         c_x, c_y = 16, -6
         for i in range(2):
             for x in range(self.window_size[0] - 2):
                 if i == 0:
-                    self.image.blit(self.images["top"], (c_x, c_y))
+                    self.image.blit(self.images["img5"], (c_x, c_y))
                 else:
-                    self.image.blit(self.images["bot"], (c_x, c_y))
+                    self.image.blit(self.images["img6"], (c_x, c_y))
                 c_x += 16
                 
             c_x = 16
-            c_y = (16 * (self.window_size[1] - 1)) + 6
+            c_y = (16 * (self.window_size[1] - 1)) + 7
             
         c_x, c_y = -6, 16
         
         for i in range(2):
             for y in range(self.window_size[1] - 2):
                 if i == 0:
-                    self.image.blit(self.images["left"], (c_x, c_y))
+                    self.image.blit(self.images["img7"], (c_x, c_y))
                 else:
-                    self.image.blit(self.images["right"], (c_x, c_y))
+                    self.image.blit(self.images["img8"], (c_x, c_y))
                 c_y += 16
                 
             c_y = 16
@@ -157,6 +165,7 @@ class WindowClass(Sprite):
                         print(cursor._layer, windows._layer)
                         cursor.bg_window = True
                     else:
+                        pass
                         cursor.bg_window = False
                         
 

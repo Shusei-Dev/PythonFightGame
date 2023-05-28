@@ -13,7 +13,7 @@ class Assets:
             return parsed
         
     def get_table_element(self, table, element):
-        return table[element]
+        return (table[element], element)
     
     def get_id(self, table, element):
         return table[element]["id"]
