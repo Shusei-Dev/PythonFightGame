@@ -8,6 +8,10 @@ class Inputs():
         self.gameObj = gameObj
 
         self.mouse_event = MouseEventHandler()
+        self.keys_event = []
+        
+        self.direction_keys = {"forward": False, "backward": False, "left": False, "right": False}
+        self.all_directions = []
 
     def update(self):
         for event in pg.event.get():
@@ -18,7 +22,12 @@ class Inputs():
                 if event.key == pg.K_ESCAPE:
                     self.gameObj.quit()
 
-        self.keys_event = pg.key.get_pressed()
+                if pg.key.name(event.key) not in self.keys_event:
+                    self.keys_event.append(pg.key.name(event.key))
+            
+            if event.type == pg.KEYUP:
+                if pg.key.name(event.key) in self.keys_event:
+                    self.keys_event.remove(pg.key.name(event.key))
 
         self.mouse_event.btn_pressed(pg.mouse.get_pressed())
 

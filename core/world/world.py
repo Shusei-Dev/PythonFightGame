@@ -10,8 +10,8 @@ class World():
 
         self.guiManager = guiManager(self.gameObj)
         self.entityManager = entityManager(self.gameObj)
+        # TODO: add the game state system
         self.game_state = "Menu"
-        self.scaled = True
 
 
     def update(self):
@@ -24,8 +24,3 @@ class World():
     def render(self):
         # Render all sprite on the display surface
         self.gameObj.window.all_sprite.draw(self.gameObj.window.display)
-        
-        # Scale if needed
-        if self.scaled:
-            self.gameObj.window.display = pg.transform.scale_by(self.gameObj.window.display, self.gameObj.window.scale_factor)
-            self.scaled = False

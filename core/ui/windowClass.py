@@ -167,8 +167,6 @@ class WindowClass(Sprite):
                     else:
                         pass
                         cursor.bg_window = False
-                        
-
         
         # Show the full name of the window when the mouse is on it
         if self.change_name:
@@ -201,11 +199,13 @@ class WindowClass(Sprite):
                 self.draggble = True
             
             if not self.gameObj.inputs.mouse_event.LEFT_CLICK[0] and self.draggble:
+                
                 self.draggble = False
                 self.org_pos.x = self.position.x
                 self.org_pos.y = self.position.y
                         
         if self.draggble and self.on_front:
+            
             self.offset.x = self.org_pos.x + (self.gameObj.inputs.mouse_event.POS[0] - self.pos_when_click.x)
             self.offset.y = self.org_pos.y + (self.gameObj.inputs.mouse_event.POS[1] - self.pos_when_click.y)
             self.position = self.offset

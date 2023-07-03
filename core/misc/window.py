@@ -9,7 +9,7 @@ class Window():
 
         self.gameObj = gameObj
         self.base_resolution = size
-        self.scale_factor = 10
+        self.scale_factor = 2
         self.screen_size = (pg.display.Info().current_w, pg.display.Info().current_h)
         self.name = name
         self.version = version
@@ -19,7 +19,7 @@ class Window():
 
         pg.display.set_caption(self.name + " v" + str(self.version))
 
-        self.fps = 60
+        self.fps = fps
         self.dt = 0.01
         self.last_frame_end = time.time()
         self.master_clock = 0
@@ -29,23 +29,27 @@ class Window():
         self.running = True
 
     def update(self):
+        '''
         # TODO: Work on the focusing system
-        #self.focus_windows = win32ui.GetForegroundWindow().GetWindowText()
+        self.focus_windows = win32ui.GetForegroundWindow().GetWindowText()
+        '''
         
-        # Scale if needed
-       
+        '''
+        # TODO: Working on the scaling system (for pixel art)
+        self.scaled_display = pg.transform.scale(self.display, (self.base_resolution[0] * self.scale_factor, self.base_resolution[1] * self.scale_factor))
+        '''
         
         self.window.blit(self.display, (0, 0))
-        print(self.display.get_width())
+        #print(self.display.get_width())
 
         pg.display.update()
-
-        t = time.time()
-        self.dt = t - self.last_frame_end
-        self.last_frame_end = t
+        
+        self.t = time.time()
+        self.dt = self.t - self.last_frame_end
+        self.last_frame_end = self.t
         self.master_clock += self.dt
         
 
-        self.display.fill((0, 0, 0))
+        self.display.fill((0, 0, 0, 0))
 
         

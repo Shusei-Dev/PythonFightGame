@@ -24,6 +24,7 @@ class Sprite(pg.sprite.Sprite):
         self.state = True
         self.updatable = False
         
+        # Animation variable
         self.animation_state = ""
         self.animation_choose = "None"
         self.animation_spr = {}
@@ -31,6 +32,9 @@ class Sprite(pg.sprite.Sprite):
         self.animation_reverse = False
         self.last_tick = 0
         self.is_reverse = False
+        
+        # Camera variable
+        self.camera_moveble = True
 
         # Check if its an array of images
         if not isinstance(sheets, dict):
@@ -46,20 +50,22 @@ class Sprite(pg.sprite.Sprite):
             self.image = pg.Surface(self.size)
             
         try:
+            self.org_images_list = {}
             self.images_list = {}
             
             for images in self.images:
                 img_list = []
                 try:
-                    
                     # Check if its multiple sheets to create an dict of list
                     for i in self.images[images]:
                         img_list.append(self.images[images][i])
+                        self.org_images_list[images] = img_list  
                         self.images_list[images] = img_list  
                 except:
                     # Will only create one list
                     img_list.append(self.images[images])
                     self.images_list = img_list
+                    self.org_images_list = img_list
         except:
             pass
         
@@ -108,6 +114,13 @@ class Sprite(pg.sprite.Sprite):
                 
                 
     def update(self):
+        '''
+        TODO Working on the scaling
+        print(self.org_pos, self.name)
+        self.position.x = self.org_pos.x * self.gameObj.window.scale_factor
+        self.position.y = self.org_pos.y * self.gameObj.window.scale_factor
+        '''
+        
         self.rect.topleft = self.position
         
         # ---- Show the sprite on screen or not ----
@@ -157,8 +170,10 @@ class Sprite(pg.sprite.Sprite):
                     
             self.image.fill((0, 0, 0, 0))
             if self.animation_c == -1:
+                self.size = self.animation_list[self.animation_c + 1].get_size()
                 self.image.blit(self.animation_list[self.animation_c + 1].convert_alpha(), (0, 0))
             else:
+                self.size = self.animation_list[self.animation_c].get_size()
                 self.image.blit(self.animation_list[self.animation_c].convert_alpha(), (0, 0))
         # --------    
         
