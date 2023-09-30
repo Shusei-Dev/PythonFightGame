@@ -1,0 +1,80 @@
+{
+    "window_test": {
+        "sheets_path": "res/gui/window/window_sheet.png",
+        "id": "1",
+        "size": {
+            "width": 352,
+            "height": 160
+        },
+        "position": {
+            "x": 100,
+            "y": 100
+        },
+        "name": "window_test",
+        "bg_color": "(106, 196, 86)",
+        "bar_color": "(85, 85, 85)",
+        "priority": 5,
+        "font": "res/gui/font/font.ttf",
+        "type": "window",
+        "elements": ["test_text_input", "test_text_input2"]
+    },
+
+    "window_test2": {
+        "sheets_path": "res/gui/window/window_sheet.png",
+        "id": "2",
+        "size": {
+            "width": 144,
+            "height": 64
+        },
+        "position": {
+            "x": 500,
+            "y": 500
+        },
+        "name": "this is a test window it retract the name if its too large",
+        "bg_color": "(255, 0, 0)",
+        "bar_color": "(85, 85, 85)",
+        "priority": 4,
+        "font": "res/gui/font/font.ttf",
+        "type": "window"
+        
+    },
+
+    "test_text_input": {
+        "type": "element",
+        "element_type": "text_input",
+        "id": 3,
+        "size": {
+            "width": 155,
+            "height": 15
+        },
+        "position": {
+            "x": 0,
+            "y": 0
+        },
+        "name": "test_input",
+        "priority": 1,
+        "font": "res/gui/font/CONSOLA.TTF",
+        "text_box_color": "(125, 125, 125)",
+        "border_color": "(45, 43, 43)"
+    },
+
+    "test_text_input2": {
+        "type": "element",
+        "element_type": "text_input",
+        "id": 4,
+        "size": {
+            "width": 110,
+            "height": 18
+        },
+        "position": {
+            "x": 0,
+            "y": 2
+        },
+        "name": "test_input",
+        "priority": 1,
+        "font": "res/gui/font/CONSOLA.TTF",
+        "text_box_color": "(173, 161, 161)",
+        "border_color": "(45, 43, 43)"
+    }
+
+}

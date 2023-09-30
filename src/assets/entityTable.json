@@ -1,0 +1,86 @@
+{
+    "player": {
+        "sheets_path": 
+        {
+            "forward": {
+                "path": "res/entitys/player/player_movements/forward.png",
+                "spr_number": 2,
+                "size": {
+                    "width": 28,
+                    "height": 32
+                }
+            },
+            "forward_idle": {
+                "path": "res/entitys/player/player_movements/forward_idle.png",
+                "spr_number": 2,
+                "size": {
+                    "width": 28,
+                    "height": 32
+                }
+            },
+            "backward": {
+                "path": "res/entitys/player/player_movements/backward.png",
+                "spr_number": 2,
+                "size": {
+                    "width": 28,
+                    "height": 32
+                }
+            },
+            "backward_idle": {
+                "path": "res/entitys/player/player_movements/backward_idle.png",
+                "spr_number": 2,
+                "size": {
+                    "width": 28,
+                    "height": 32
+                }
+            },
+            "left": {
+                "path": "res/entitys/player/player_movements/left.png",
+                "spr_number": 2,
+                "size": {
+                    "width": 20,
+                    "height": 32
+                }
+            },
+            "left_idle": {
+                "path": "res/entitys/player/player_movements/left_idle.png",
+                "spr_number": 2,
+                "size": {
+                    "width": 20,
+                    "height": 34
+                }
+            },
+            "right": {
+                "path": "res/entitys/player/player_movements/right.png",
+                "spr_number": 2,
+                "size": {
+                    "width": 20,
+                    "height": 34
+                }
+            },
+            "right_idle": {
+                "path": "res/entitys/player/player_movements/right_idle.png",
+                "spr_number": 2,
+                "size": {
+                    "width": 20,
+                    "height": 32
+                }
+            }
+        },
+        
+        "id": "1",
+        "size": {
+            "width": 28,
+            "height": 32
+        },
+        "position": {
+            "x": 80,
+            "y": 80
+        },
+        "priority": 2,
+        "health": 200,
+        "speed": 0.35,
+        "name": "Player",
+        "type": "human"
+    }
+}
