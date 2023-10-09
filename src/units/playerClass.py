@@ -9,7 +9,6 @@ class Player(Entity):
         self.gameObj = gameObj
         self.table = sprite_table[0]
         
-        self.dance = False
         self.tick = 0
         
         self.set_animation("forward_idle", [0.4, 0.4])
@@ -66,16 +65,6 @@ class Player(Entity):
                 self.gameObj.inputs.all_directions.remove("right")
                 
                 
-        if "space" in self.gameObj.inputs.keys_event:
-            if self.dance == False:
-                self.dance = True
-                
-        if "space" not in self.gameObj.inputs.keys_event:
-            if self.dance == True:
-                self.dance = False
-                
-        print(self.dance)
-                
         if self.gameObj.settings.data["control"]["forward"] not in self.gameObj.inputs.keys_event and self.gameObj.settings.data["control"]["backward"] not in self.gameObj.inputs.keys_event and self.gameObj.settings.data["control"]["left"] not in self.gameObj.inputs.keys_event and self.gameObj.settings.data["control"]["right"] not in self.gameObj.inputs.keys_event:
             self.change_direction(self.directions[0])
             self.action = "none"        
@@ -116,6 +105,4 @@ class Player(Entity):
             elif self.old_direction == self.directions[4]:
                 self.set_animation("right_idle", [0.4, 0.4])
                 
-        if self.dance:
-            print(self.images_list)
             

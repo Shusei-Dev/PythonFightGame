@@ -26,5 +26,7 @@ def load_sheet(path=str, spr_width=int, spr_height=int, max_sprite=int):
         pos_x = 0
         pos_y = spr_height * y
         
+    print(sprites_img)
+        
     return sprites_img
     
